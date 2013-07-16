@@ -9,46 +9,56 @@ use Data::Dump::OneLine qw(dump1);
 use Monkey::Patch::Action qw(patch_package);
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 our $Color     = $ENV{COLOR} // 1;
 our $DumpObj   = 0;
 our $MaxArgLen = 0;
 our $Terse     = 1;
 
+our $h;
+
 require Carp;
 require Carp::Always;
-our $h = patch_package(
-    "Carp", "format_arg", "replace",
-    sub {
-        my $arg = shift;
-        my $res;
 
-        if (blessed($arg) && !$DumpObj) {
-            $res = "'$arg'";
-        } else {
-            if ($Terse) {
-                $res = dump1($arg);
+sub import {
+    $h = patch_package(
+        "Carp", "format_arg", "replace",
+        sub {
+            my $arg = shift;
+            my $res;
+
+            if (blessed($arg) && !$DumpObj) {
+                $res = "'$arg'";
             } else {
-                $res = dump($arg);
+                if ($Terse) {
+                    $res = dump1($arg);
+                } else {
+                    $res = dump($arg);
+                }
+                $res = substr($res, 0, $MaxArgLen) . "..."
+                    if $MaxArgLen > 0 && $MaxArgLen < length($res);
             }
-            $res = substr($res, 0, $MaxArgLen) . "..."
-                if $MaxArgLen > 0 && $MaxArgLen < length($res);
-        }
 
-        state $colnum = 0;
-        if ($Color) {
-            my $col;
-            if ($colnum++ % 2) {
-                $col = 33;
-            } else {
-                $col = 36;
+            state $colnum = 0;
+            if ($Color) {
+                my $col;
+                if ($colnum++ % 2) {
+                    $col = 33;
+                } else {
+                    $col = 36;
+                }
+                $res = "\e[$col;3m$res\e[0m";
             }
-            $res = "\e[$col;3m$res\e[0m";
-        }
 
-        return $res;
-    });
+            return $res;
+        }
+    );
+}
+
+sub unimport {
+    undef $h;
+}
 
 1;
 # ABSTRACT: Like Carp::Always, but dumps the content of function arguments
@@ -63,7 +73,7 @@ Carp::Always::Dump - Like Carp::Always, but dumps the content of function argume
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
