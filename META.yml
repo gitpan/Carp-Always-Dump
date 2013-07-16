@@ -15,10 +15,11 @@ meta-spec:
 name: Carp-Always-Dump
 requires:
   Carp::Always: 0
+  Data::Dump: 0
   Data::Dump::OneLine: 0
   Monkey::Patch::Action: 0
   perl: 5.010001
 resources:
   homepage: http://metacpan.org/release/Carp-Always-Dump
   repository: http://github.com/sharyanto/perl-Carp-Always-Dump
-version: 0.01
+version: 0.02

@@ -4,15 +4,17 @@ use 5.010001;
 use strict;
 use warnings;
 
+use Data::Dump qw(dump);
 use Data::Dump::OneLine qw(dump1);
 use Monkey::Patch::Action qw(patch_package);
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 our $Color     = $ENV{COLOR} // 1;
 our $DumpObj   = 0;
 our $MaxArgLen = 0;
+our $Terse     = 1;
 
 require Carp;
 require Carp::Always;
@@ -25,7 +27,11 @@ our $h = patch_package(
         if (blessed($arg) && !$DumpObj) {
             $res = "'$arg'";
         } else {
-            $res = dump1($arg);
+            if ($Terse) {
+                $res = dump1($arg);
+            } else {
+                $res = dump($arg);
+            }
             $res = substr($res, 0, $MaxArgLen) . "..."
                 if $MaxArgLen > 0 && $MaxArgLen < length($res);
         }
@@ -57,7 +63,7 @@ Carp::Always::Dump - Like Carp::Always, but dumps the content of function argume
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -79,6 +85,11 @@ them as 'Foo::Bar=HASH(0x19c8ff8)'.
 
 Like C<$MaxArgLen> in L<Carp>, to limit the number of characters of dump to
 show.
+
+=head2 $Terse => BOOL (default: 1)
+
+If set to false, will use L<Data::Dump> instead of the terser
+L<Data::Dump::OneLine> to produce the dumps.
 
 =head1 ENVIRONMENT
 

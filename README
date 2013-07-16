@@ -3,7 +3,7 @@ NAME
     function arguments
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
      % perl -MCarp::Always::Dump script.pl
@@ -20,6 +20,10 @@ VARIABLES
   $MaxArgLen => INT (default: 0)
     Like $MaxArgLen in Carp, to limit the number of characters of dump to
     show.
+
+  $Terse => BOOL (default: 1)
+    If set to false, will use Data::Dump instead of the terser
+    Data::Dump::OneLine to produce the dumps.
 
 ENVIRONMENT
   COLOR => BOOL

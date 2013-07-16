@@ -17,13 +17,14 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Carp-Always-Dump",
-  "dist_version" => "0.01",
+  "dist_version" => "0.02",
   "license" => "perl",
   "module_name" => "Carp::Always::Dump",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Carp::Always" => 0,
+    "Data::Dump" => 0,
     "Data::Dump::OneLine" => 0,
     "Monkey::Patch::Action" => 0,
     "perl" => "5.010001"
