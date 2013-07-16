@@ -1,0 +1,24 @@
+---
+abstract: 'Like Carp::Always, but dumps the content of function arguments'
+author:
+  - 'Steven Haryanto <stevenharyanto@gmail.com>'
+build_requires:
+  Module::Build: 0.3601
+configure_requires:
+  Module::Build: 0.3601
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Carp-Always-Dump
+requires:
+  Carp::Always: 0
+  Data::Dump::OneLine: 0
+  Monkey::Patch::Action: 0
+  perl: 5.010001
+resources:
+  homepage: http://metacpan.org/release/Carp-Always-Dump
+  repository: http://github.com/sharyanto/perl-Carp-Always-Dump
+version: 0.01
