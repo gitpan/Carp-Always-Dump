@@ -3,7 +3,7 @@ NAME
     function arguments
 
 VERSION
-    version 0.03
+    version 0.04
 
 SYNOPSIS
      % perl -MCarp::Always::Dump script.pl
@@ -24,6 +24,16 @@ VARIABLES
   $Terse => BOOL (default: 1)
     If set to false, will use Data::Dump instead of the terser
     Data::Dump::OneLine to produce the dumps.
+
+IMPORTS
+    For each variable mentioned in "VARIABLES", you can also set it via
+    import argument:
+
+     use Carp::Always::Dump Color=>0, DumpObj=>1;
+
+    Via command-line:
+
+     % perl -MCarp::Always::Dump=Color,1 ...
 
 ENVIRONMENT
   COLOR => BOOL

@@ -1,5 +1,10 @@
 Revision history for Carp-Always-Dump
 
+0.04    2013-08-07 (SHARYANTO)
+
+        - Allow setting option variables via import().
+
+
 0.03    2013-07-16 (SHARYANTO)
 
         - Add unimport() to restore Carp::Always' original behavior.
@@ -12,5 +17,5 @@ Revision history for Carp-Always-Dump
 
 0.01    2013-07-16 (SHARYANTO)
 
-        First release.
+        - First release.
 

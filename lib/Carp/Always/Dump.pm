@@ -9,7 +9,7 @@ use Data::Dump::OneLine qw(dump1);
 use Monkey::Patch::Action qw(patch_package);
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 our $Color     = $ENV{COLOR} // 1;
 our $DumpObj   = 0;
@@ -22,6 +22,24 @@ require Carp;
 require Carp::Always;
 
 sub import {
+    my ($self, %args) = @_;
+
+    for my $k (keys %args) {
+        my $v = $args{$k};
+        if ($k =~ /^\$?Color$/) {
+            $Color = $v;
+        } elsif ($k =~ /^\$?DumpObj$/) {
+            $DumpObj = $v;
+        } elsif ($k =~ /^\$MaxArgLen$/) {
+            $MaxArgLen = $v;
+        } elsif ($k =~ /^\$?Terse$/) {
+            $Terse = $v;
+        } else {
+            die "Unknown import argument $k, please use one of: ".
+                "Color/DumpObj/MaxArgLen/Terse";
+        }
+    }
+
     $h = patch_package(
         "Carp", "format_arg", "replace",
         sub {
@@ -63,8 +81,8 @@ sub unimport {
 1;
 # ABSTRACT: Like Carp::Always, but dumps the content of function arguments
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -73,7 +91,7 @@ Carp::Always::Dump - Like Carp::Always, but dumps the content of function argume
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -100,6 +118,17 @@ show.
 
 If set to false, will use L<Data::Dump> instead of the terser
 L<Data::Dump::OneLine> to produce the dumps.
+
+=head1 IMPORTS
+
+For each variable mentioned in L</"VARIABLES">, you can also set it via import
+argument:
+
+ use Carp::Always::Dump Color=>0, DumpObj=>1;
+
+Via command-line:
+
+ % perl -MCarp::Always::Dump=Color,1 ...
 
 =head1 ENVIRONMENT
 
@@ -129,4 +158,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
