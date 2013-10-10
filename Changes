@@ -1,5 +1,10 @@
 Revision history for Carp-Always-Dump
 
+0.05    2013-10-10 (SHARYANTO)
+
+        - Turn off color when not run interactively.
+
+
 0.04    2013-08-07 (SHARYANTO)
 
         - Allow setting option variables via import().
@@ -18,4 +23,3 @@ Revision history for Carp-Always-Dump
 0.01    2013-07-16 (SHARYANTO)
 
         - First release.
-

@@ -9,9 +9,9 @@ use Data::Dump::OneLine qw(dump1);
 use Monkey::Patch::Action qw(patch_package);
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
-our $Color     = $ENV{COLOR} // 1;
+our $Color     = $ENV{COLOR} // $ENV{INTERACTIVE} // (-t STDOUT);
 our $DumpObj   = 0;
 our $MaxArgLen = 0;
 our $Terse     = 1;
@@ -91,7 +91,7 @@ Carp::Always::Dump - Like Carp::Always, but dumps the content of function argume
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -135,6 +135,8 @@ Via command-line:
 =head2 COLOR => BOOL
 
 Used to set the default of C<$Color>.
+
+=head2 INTERACTIVE => BOOL
 
 =head1 SEE ALSO
 

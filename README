@@ -3,7 +3,7 @@ NAME
     function arguments
 
 VERSION
-    version 0.04
+    version 0.05
 
 SYNOPSIS
      % perl -MCarp::Always::Dump script.pl
@@ -39,6 +39,7 @@ ENVIRONMENT
   COLOR => BOOL
     Used to set the default of $Color.
 
+  INTERACTIVE => BOOL
 SEE ALSO
     Carp::Always (and its variants such as: Carp::Always::Color,
     Carp::Always::SHS)
