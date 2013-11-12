@@ -3,10 +3,14 @@ NAME
     function arguments
 
 VERSION
-    version 0.05
+    version 0.06
 
 SYNOPSIS
      % perl -MCarp::Always::Dump script.pl
+
+DESCRIPTION
+FUNCTIONS
+    None are exported by default, but they are exportable.
 
 VARIABLES
   $Color => BOOL (default: from COLOR environment, or 1)
@@ -48,6 +52,21 @@ SEE ALSO
     function arguments.
 
     Monkey::Patch::Action
+
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/Carp-Always-Dump>.
+
+SOURCE
+    Source repository is at
+    <https://github.com/sharyanto/perl-Carp-Always-Dump>.
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    <https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always-Dump>
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
 
 AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>

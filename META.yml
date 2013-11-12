@@ -3,6 +3,7 @@ abstract: 'Like Carp::Always, but dumps the content of function arguments'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
+  File::Spec: 0
   IO::Handle: 0
   IPC::Open3: 0
   Test::More: 0
@@ -22,6 +23,7 @@ requires:
   Monkey::Patch::Action: 0
   perl: 5.010001
 resources:
-  homepage: http://metacpan.org/release/Carp-Always-Dump
-  repository: http://github.com/sharyanto/perl-Carp-Always-Dump
-version: 0.05
+  bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always-Dump
+  homepage: https://metacpan.org/release/Carp-Always-Dump
+  repository: git://github.com/sharyanto/perl-Carp-Always-Dump.git
+version: 0.06

@@ -9,7 +9,7 @@ use Data::Dump::OneLine qw(dump1);
 use Monkey::Patch::Action qw(patch_package);
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 our $Color     = $ENV{COLOR} // $ENV{INTERACTIVE} // (-t STDOUT);
 our $DumpObj   = 0;
@@ -85,17 +85,26 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Carp::Always::Dump - Like Carp::Always, but dumps the content of function arguments
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
  % perl -MCarp::Always::Dump script.pl
+
+=head1 DESCRIPTION
+
+=head1 FUNCTIONS
+
+
+None are exported by default, but they are exportable.
 
 =head1 VARIABLES
 
@@ -147,6 +156,23 @@ L<Devel::SimpleTrace>, a simpler stack trace module, without showing function
 arguments.
 
 L<Monkey::Patch::Action>
+
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Carp-Always-Dump>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Carp-Always-Dump>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always-Dump>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 
