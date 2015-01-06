@@ -1,16 +1,21 @@
 NAME
-    Carp::Always::Dump - Like Carp::Always, but dumps the content of
-    function arguments
+    Carp::Always::Dump - (DEPRECATED) Like Carp::Always, but dumps the
+    content of function arguments
 
 VERSION
-    version 0.06
+    This document describes version 0.07 of Carp::Always::Dump (from Perl
+    distribution Carp-Always-Dump), released on 2015-01-06.
 
 SYNOPSIS
      % perl -MCarp::Always::Dump script.pl
 
 DESCRIPTION
-FUNCTIONS
-    None are exported by default, but they are exportable.
+    NOTICE: This module is deprecated. The same functionality is in
+    Devel::Confess:
+
+     % perl -d:Confess=dump ...
+
+    This module will be removed from CPAN.
 
 VARIABLES
   $Color => BOOL (default: from COLOR environment, or 1)
@@ -59,7 +64,7 @@ HOMEPAGE
 
 SOURCE
     Source repository is at
-    <https://github.com/sharyanto/perl-Carp-Always-Dump>.
+    <https://github.com/perlancar/perl-Carp-Always-Dump>.
 
 BUGS
     Please report any bugs or feature requests on the bugtracker website
@@ -69,10 +74,10 @@ BUGS
     to an existing test-file that illustrates the bug or desired feature.
 
 AUTHOR
-    Steven Haryanto <stevenharyanto@gmail.com>
+    perlancar <perlancar@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Steven Haryanto.
+    This software is copyright (c) 2015 by perlancar@cpan.org.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

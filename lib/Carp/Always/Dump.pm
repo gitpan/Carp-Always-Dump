@@ -9,7 +9,7 @@ use Data::Dump::OneLine qw(dump1);
 use Monkey::Patch::Action qw(patch_package);
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 our $Color     = $ENV{COLOR} // $ENV{INTERACTIVE} // (-t STDOUT);
 our $DumpObj   = 0;
@@ -79,7 +79,7 @@ sub unimport {
 }
 
 1;
-# ABSTRACT: Like Carp::Always, but dumps the content of function arguments
+# ABSTRACT: (DEPRECATED) Like Carp::Always, but dumps the content of function arguments
 
 __END__
 
@@ -89,11 +89,11 @@ __END__
 
 =head1 NAME
 
-Carp::Always::Dump - Like Carp::Always, but dumps the content of function arguments
+Carp::Always::Dump - (DEPRECATED) Like Carp::Always, but dumps the content of function arguments
 
 =head1 VERSION
 
-version 0.06
+This document describes version 0.07 of Carp::Always::Dump (from Perl distribution Carp-Always-Dump), released on 2015-01-06.
 
 =head1 SYNOPSIS
 
@@ -101,10 +101,12 @@ version 0.06
 
 =head1 DESCRIPTION
 
-=head1 FUNCTIONS
+B<NOTICE:> This module is deprecated. The same functionality is in
+L<Devel::Confess>:
 
+ % perl -d:Confess=dump ...
 
-None are exported by default, but they are exportable.
+This module will be removed from CPAN.
 
 =head1 VARIABLES
 
@@ -163,12 +165,11 @@ Please visit the project's homepage at L<https://metacpan.org/release/Carp-Alway
 
 =head1 SOURCE
 
-Source repository is at L<https://github.com/sharyanto/perl-Carp-Always-Dump>.
+Source repository is at L<https://github.com/perlancar/perl-Carp-Always-Dump>.
 
 =head1 BUGS
 
-Please report any bugs or feature requests on the bugtracker website
-L<https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always-Dump>
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always-Dump>
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -176,11 +177,11 @@ feature.
 
 =head1 AUTHOR
 
-Steven Haryanto <stevenharyanto@gmail.com>
+perlancar <perlancar@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2015 by perlancar@cpan.org.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
